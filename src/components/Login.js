@@ -31,7 +31,7 @@ function Login() {
 <button type='submit' disabled={isSubmitting} value='Submit'>submit</button>
  </form>
  <li>singup</li>
- <NavLink to="/singup">singup</NavLink>
+ <NavLink to="/signup">singup</NavLink>
    </>
   )
 }

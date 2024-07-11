@@ -1,4 +1,4 @@
-// import { response } from 'express'
+
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom'
@@ -20,14 +20,12 @@ function Register() {
     })
     const recive = await response.json()
     console.log(recive);
-  
   }catch(err){
     console.error(err)
   }
   }
 
   const onSubmit = (data) => {
-    // dataApi(data)
     dataApi(data)
     console.log(data);
   }

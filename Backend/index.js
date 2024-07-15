@@ -4,12 +4,12 @@ let cors = require("cors")
 // let fs = require('fs')
 let mongodb = require('./Connect.js')
 let userRouter = require('./router/Userrouter.js')
-app.use(express.json())
 app.use(cors())
 
 mongodb()  // mongo db ko connect kar liya
 // userRouter() 
-app.use("/v1",userRouter)
+app.use(express.json())
+app.use(userRouter)
 
 
 // app.post("/signup",function(req,res){

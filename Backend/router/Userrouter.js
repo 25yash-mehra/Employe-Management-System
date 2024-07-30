@@ -1,8 +1,8 @@
 let express = require("express")
 let router = express.Router()
-let createUser = require("../control/Usercontroll")
+let {createUser , loginData} = require("../control/Usercontroll")
 
 
 router.route("/signup").post(createUser)
-
-module.exports = router
+router.route("/").post(loginData)
+module.exports = router 

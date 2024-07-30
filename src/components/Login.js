@@ -6,18 +6,28 @@ function Login() {
     const {
         register,
         handleSubmit,
-        // watch,
         formState: { errors , isSubmitting},
       } = useForm();
+
+// api
+ const loginApi = async(data) =>{
+try{
+    let ldata = await fetch(`http://localhost:8000/`,{
+      method:'POST',
+      headers:{"content-type": "application/json"},
+      body:JSON.stringify(data)
+    })
+    let store = await ldata.json()
+    console.log(store);
+ }catch(err){
+  console.log("error");
+ }
+}
+
       const onSubmit = async (data) => {
-        await new Promise((resolve, reject) => {
-            setTimeout(()=>{
-                resolve(data)
-                console.log(data);
-            },2000)
-        })
+        loginApi(data)
       }
-    //   console.log(watch("email"))
+ 
 
 
   return (

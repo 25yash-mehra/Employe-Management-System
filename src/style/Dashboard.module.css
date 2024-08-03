@@ -1,0 +1,15 @@
+.box1{
+    width: 13rem;
+    height: 7rem;
+    background-color: #01e1ff;
+  }
+.box2{
+    width: 13rem;
+    height: 7rem;
+    background-color: #ff4901;
+  }
+  .Boxcontainer{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }

@@ -1,0 +1,18 @@
+.headerContainer {
+  display: flex;
+}
+
+.sidebar {
+  height: 100vh; /* Full height of the viewport */
+}
+
+
+.Boxcontainer h3 {
+  /* margin: 0; */
+  margin-left: 10px;
+}
+
+.boss{
+  display: flex;
+  /* justify-content: space-between; */
+}

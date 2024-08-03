@@ -47,7 +47,7 @@ const navigate = useNavigate()
   const onSubmit = async (data) => {
     loginApi(data);
     if(loginSucess){
-   navigate("/home")
+   navigate("/dashboard")
 }
   };
 

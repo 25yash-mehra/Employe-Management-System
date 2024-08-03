@@ -25,8 +25,9 @@ const loginData = async(req,res)=>{
         let compare = await bcrypt.compare(req.body.password,user.password)
         if(!compare) return res.status(404).send({message:"not matched"})
             let token = jwt.sign({email:user?.email},"secret")
+        let decode = jwt.decode(token)
             //    console.log(token);
-               res.status(200).send(token)
+               res.status(200).send(decode)
 }
 
 module.exports = {createUser , loginData}

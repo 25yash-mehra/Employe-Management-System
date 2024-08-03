@@ -4,6 +4,8 @@ import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 function Header() {
   return (
     <>
+    
+    
 <Sidebar>
   <Menu
     menuItemStyles={{
@@ -22,6 +24,7 @@ function Header() {
     <MenuItem>log out</MenuItem>
   </Menu> 
 </Sidebar>
+
 </>
   )
 }

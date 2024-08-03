@@ -1,9 +1,18 @@
-import React, { useEffect,FontAwesomeIcon} from 'react';
+import React, { useEffect, useState} from 'react';
 import { useForm } from 'react-hook-form';
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../style/Register.css'; 
+// import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Register() {
+
+const [showPassword,setShowPassword] = useState(false)
+
+
+const handelToggel = ()=>{
+  setShowPassword(!showPassword)
+}
+
   const {
     register,
     handleSubmit,
@@ -59,16 +68,19 @@ function Register() {
         </div>
         <div className="form-group">
      
-<FontAwesomeIcon icon="fa-regular fa-eye" />
+        <i className={showPassword ? 'fa-regular fa-eye' : 'fa-regular fa-eye-slash'} onClick={handelToggel} id='icons'></i>
           <input
             placeholder="Password"
-            type="password"
+            type = {
+            showPassword ? "text" : "password"
+          }
             {...register('password', {
               required: { value: true, message: 'This field is required' },
               minLength: { value: 3, message: 'Minimum length is 3' },
               maxLength: { value: 6, message: 'Maximum length is 6' }
             })}
           />
+          {/* <button onClick={()=>{handelToggel()}}>show</button> */}
           {errors.password && <span className="error-message">{errors.password.message}</span>}
         </div>
         <button type="submit">Submit</button>

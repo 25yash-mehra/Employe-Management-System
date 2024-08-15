@@ -1,7 +1,9 @@
 import React from 'react'
 import Header from '../components/Header'
 import styles from "../style/Dashboard.module.css"
-function Dashboard() {
+function Dashboard({count}) {
+  console.log(count);
+  
   return (
 <>
 <div style={{display:"flex"}}>
@@ -9,9 +11,11 @@ function Dashboard() {
      <div className={styles.Boxcontainer}>
       <div className={styles.box1}>
         <i class="fa-regular fa-user" style={{fontSize:"45px", marginLeft:"30px", marginTop:"10px"}}></i>
-        <h3>Total employee</h3>   
+
+        <h3>Total employee{count}</h3>   
       </div>
-      {/* --------------------------------2nd-----------------*/}
+    
+      {/*--------------------------------2nd--------------------------------*/}
       <div className={styles.box2}>
         <i class="fa-solid fa-indian-rupee-sign" style={{fontSize:"45px", marginLeft:"30px", marginTop:"10px"}}></i>
         <h3>Total Salary</h3>   

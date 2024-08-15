@@ -1,15 +1,12 @@
+const { type } = require('@testing-library/user-event/dist/type');
+const mongoose = require('mongoose');
 
-let mongoose = require('mongoose')
-let Schema = mongoose.Schema
+const userSchema = new mongoose.Schema({
+    email: { type: String, required: true },
+    password: { type: String, required: true },
+    username: { type: String, required: true },
+     
+});
 
+module.exports = mongoose.model('User', userSchema); 
 
-let userSchema = new Schema({
-   username: { type: String, required: true },
-   email:{type:String, required:true, unique:true },
-   password:{type:String, required:true},
-created_at:{type:Date,default:Date.now}
-})   
-
-let model = mongoose.model("user",userSchema)
-
-module.exports = model;

@@ -10,6 +10,4 @@ mongodb()  // mongo db ko connect kar liya
 app.use(express.json())
 app.use(userRouter)
 
-
-
 app.listen(8000)

@@ -17,25 +17,67 @@ function Manageemp() {
 
   const { register, handleSubmit } = useForm();
 
+//GET API
+const getEmp = async()=>{
+  try{
+    const empData = await fetch("http://localhost:8000/manageemployee")
+    const response = await empData.json()
+    setEmployes(response)
+    console.log(response.fname);
+  }catch(err){
+console.error(err)
+  }
+}
 
+useEffect(()=>{
+  getEmp()
+  console.log("data use effect me he");
+},[])
+
+//DELET API
+// const deletData = async()=>{
+//   try{
+//     let response = await fetch("http://localhost:8000/manageemployee/:id",{
+//       method:"DELET",
+//       headers:{'content-Type':'application/json'},
+//       body:JSON.stringify()
+//     })
+//     let result = response.json()
+//   }catch(err){
+// console.log(err)
+//   }
+// }
+
+// POST API
   const fetchData = async(result)=>{
-  let response = await fetch(`http://localhost:8000/manageemployee`,{
+    try{
+    let response = await fetch(`http://localhost:8000/manageemployee`,{
     method:'POST',
     headers:{'content-Type':'application/json'},
     body:JSON.stringify(result)
   })
-  let store = await response.json()
-  console.log(store);
+     let store = await response.text()
+     console.log(store);
+     getEmp()
+  
+}catch(err){
+console.log(err)
+}
   }
 
 
-  const collect = (data) => {
+  const collect = async (data) => {
     const newEmployes = [...employes, { id: employes.length + 1, ...data }];
     setEmployes(newEmployes);
-    fetchData(newEmployes)
+    console.log(newEmployes);
+    await fetchData(data)
     handleClose();
   };
 
+  const delet = (id) =>{
+setEmployes(employes.filter((emp)=>emp.id !== id))
+  }
+  
   return (
     <>
       <div className={styles.container}>
@@ -45,7 +87,7 @@ function Manageemp() {
             <Button variant="contained" color="success" onClick={handleShow}>
               Add Employee
             </Button>
-            <Tabledata data={employes} />
+            <Tabledata data={employes} onDelet={delet} />
           </div>
         </div>
 
@@ -61,7 +103,7 @@ function Manageemp() {
                   type="text"
                   placeholder="user name"
                   autoFocus
-                  {...register('name')}
+                  {...register('fname')}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -79,7 +121,7 @@ function Manageemp() {
                   type="number"
                   placeholder="number"
                   autoFocus
-                  {...register('number')}
+                  {...register('contact')}
                 />
               </Form.Group>
 

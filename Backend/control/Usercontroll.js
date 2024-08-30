@@ -1,5 +1,4 @@
 let userScheama = require("../Schema")
-let employeSchema = require("../Schema/Empschema")
 let bcrypt = require("bcrypt")
 let jwt = require("jsonwebtoken")
 
@@ -15,7 +14,6 @@ const createUser = async(req,res) =>{
     username:req.body.username
 })
 
-// console.log(req.body.username)
 
     res.status(201).send(data)
 }        
@@ -31,15 +29,7 @@ const loginData = async(req,res)=>{
                res.status(200).send(decode)
 }
 
-const manageemployee = async(req,res)=>{
-  let empData = await employeSchema.insertMany({
-    email:req.body.email,
-    contact:req.body.contact,
-    fname:req.body.fname
-  })
-    
-   res.status(200).send(empData)
-}
 
 
-module.exports = {createUser , loginData, manageemployee}
+
+module.exports = {createUser , loginData}

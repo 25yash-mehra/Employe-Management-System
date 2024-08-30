@@ -2,7 +2,8 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Table } from 'react-bootstrap';
 
-function Tabledata({ data }) {
+function Tabledata({ data , onDelet}) {
+
   return (
     <div>
       <Table striped bordered hover>
@@ -12,21 +13,23 @@ function Tabledata({ data }) {
             <th>Name</th>
             <th>Email</th>
             <th>Contact No.</th>
+            {/* <th>Actions</th> */}
           </tr>
         </thead>
         <tbody>
           {
             data.map((val, index) => (
               <tr key={index}> 
-                <td>{val.id}</td> 
-                <td>{val.name}</td>
+                <td>{val._id}</td> 
+                <td>{val.fname}</td>
                 <td>{val.email}</td>
-                <td>{val.number}</td>
+                <td>{val.contact}</td>
                <td> <Button sx={{ backgroundColor: 'blue', color: 'yellowgreen' }}>
   Update
 </Button></td>
 
-              <td>  <Button sx={{background:"red",color:"black"}}>delet</Button>  </td>
+              <td>  <Button sx={{background:"red",color:"black"}} onClick={()=>{onDelet(val.id)}}>
+              delet  </Button>  </td>
               </tr>
             )) 
           }

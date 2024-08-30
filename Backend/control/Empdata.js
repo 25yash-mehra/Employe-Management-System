@@ -1,4 +1,5 @@
 // const Empschema = require("../Schema/Empschema")
+const { json } = require("react-router")
 let empSchema = require("../Schema/Empschema")
 
 const employeData = async(req,res) => {
@@ -13,16 +14,15 @@ const employeData = async(req,res) => {
 }
 
 const findemp = async(req,res)=>{
-    // console.log(empSchema);
-    
     let allEmployee = await empSchema.find()
     res.status(200).send(allEmployee)
 }
 
 
+
 const deletItem = async(req,res)=>{
-console.log(req.params.id);
-res.status(200).send("done")
+let data = await empSchema.deleteOne({_id:req.params.id})
+res.status(200).send(data)
 }
 
 module.exports = {employeData,findemp,deletItem}

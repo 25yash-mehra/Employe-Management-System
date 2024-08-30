@@ -28,7 +28,7 @@ function Tabledata({ data , onDelet}) {
   Update
 </Button></td>
 
-              <td>  <Button sx={{background:"red",color:"black"}} onClick={()=>{onDelet(val.id)}}>
+              <td>  <Button sx={{background:"red",color:"black"}} onClick={()=>{onDelet(val._id)}}>
               delet  </Button>  </td>
               </tr>
             )) 

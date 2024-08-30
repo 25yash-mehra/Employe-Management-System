@@ -23,7 +23,7 @@ const getEmp = async()=>{
     const empData = await fetch("http://localhost:8000/manageemployee")
     const response = await empData.json()
     setEmployes(response)
-    console.log(response.fname);
+    // console.log(response.fname);
   }catch(err){
 console.error(err)
   }
@@ -35,18 +35,18 @@ useEffect(()=>{
 },[])
 
 //DELET API
-// const deletData = async()=>{
-//   try{
-//     let response = await fetch("http://localhost:8000/manageemployee/:id",{
-//       method:"DELET",
-//       headers:{'content-Type':'application/json'},
-//       body:JSON.stringify()
-//     })
-//     let result = response.json()
-//   }catch(err){
-// console.log(err)
-//   }
-// }
+const deletData = async(id)=>{
+  try{
+    let response = await fetch(`http://localhost:8000/manageemployee/${id}`,{
+      method:"DELETE",
+    })
+    if(response.ok){
+      setEmployes(employes.filter((emp)=>emp._id !== id))
+    }
+  }catch(err){
+console.log(err)
+  }
+}
 
 // POST API
   const fetchData = async(result)=>{
@@ -71,12 +71,13 @@ console.log(err)
     setEmployes(newEmployes);
     console.log(newEmployes);
     await fetchData(data)
+    // deletData(employes.length +1)
     handleClose();
   };
 
-  const delet = (id) =>{
-setEmployes(employes.filter((emp)=>emp.id !== id))
-  }
+//   const delet = (id) =>{
+// setEmployes(employes.filter((emp)=>emp.id !== id))
+//   }
   
   return (
     <>
@@ -85,9 +86,8 @@ setEmployes(employes.filter((emp)=>emp.id !== id))
         <div className={styles.content}>
           <div className={styles.mainContainer}>
             <Button variant="contained" color="success" onClick={handleShow}>
-              Add Employee
-            </Button>
-            <Tabledata data={employes} onDelet={delet} />
+              Add Employee</Button>
+            <Tabledata data={employes} onDelet={deletData}/>
           </div>
         </div>
 
